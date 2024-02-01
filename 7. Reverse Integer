@@ -26,3 +26,38 @@ Output: 21
 Constraints:
 
 -231 <= x <= 231 - 1
+
+Code :
+class Solution {
+    public int reverse(int x) {
+        if(x < 0){
+            x = Math.abs(x);
+            int t = x;
+            long reverse = 0;
+            while(t > 0){
+                int remainder = t % 10;
+                reverse = reverse * 10 + remainder;
+                t /= 10;
+            }
+            
+            int s = (int)Math.log10(reverse) + 1;
+            if(reverse < Integer.MIN_VALUE || reverse > Integer.MAX_VALUE){
+                return 0;
+            }
+            //System.out.println(size);
+            reverse = -reverse;
+            return (int)reverse;
+        }
+        int t = x;
+        long reverse = 0;
+        while(t > 0){
+            int remainder = t % 10;
+            reverse = reverse * 10 + remainder;
+            t /= 10;
+        }
+        if(reverse < Integer.MIN_VALUE || reverse > Integer.MAX_VALUE){
+            return 0;
+        }
+        return (int)reverse;
+    }
+}
